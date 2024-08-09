@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelReader;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.HashMap;
 
 public class SinglePlayerController extends StartController implements Checkable{
     @FXML
@@ -52,6 +53,30 @@ public class SinglePlayerController extends StartController implements Checkable
     private ImageView img8;
     @FXML
     private ImageView img9;
+    HashMap<Integer ,ImageView> imagesMap =new HashMap<>();
+    HashMap<String ,Integer> buttonsMap =new HashMap<>();
+    @FXML
+    public void initialize(){
+        buttonsMap.put("btn1",1);
+        buttonsMap.put("btn2",2);
+        buttonsMap.put("btn3",3);
+        buttonsMap.put("btn4",4);
+        buttonsMap.put("btn5",5);
+        buttonsMap.put("btn6",6);
+        buttonsMap.put("btn7",7);
+        buttonsMap.put("btn8",8);
+        buttonsMap.put("btn9",9);
+        ///////////////////////////
+        imagesMap.put(1,img1);
+        imagesMap.put(2,img2);
+        imagesMap.put(3,img3);
+        imagesMap.put(4,img4);
+        imagesMap.put(5,img5);
+        imagesMap.put(6,img6);
+        imagesMap.put(7,img7);
+        imagesMap.put(8,img8);
+        imagesMap.put(9,img9);
+    }
 
 
     @Override
@@ -83,35 +108,8 @@ public class SinglePlayerController extends StartController implements Checkable
         } else {
             image = new Image("/x.png");
         }
-        switch (btnID) {
-            case 1:
-                img1.setImage(image);
-                break;
-            case 2:
-                img2.setImage(image);
-                break;
-            case 3:
-                img3.setImage(image);
-                break;
-            case 4:
-                img4.setImage(image);
-                break;
-            case 5:
-                img5.setImage(image);
-                break;
-            case 6:
-                img6.setImage(image);
-                break;
-            case 7:
-                img7.setImage(image);
-                break;
-            case 8:
-                img8.setImage(image);
-                break;
-            case 9:
-                img9.setImage(image);
-                break;
-        }
+        ImageView img=imagesMap.get(btnID);
+        img.setImage(image);
         choices.add(btnID);
     }
 
@@ -180,9 +178,11 @@ public class SinglePlayerController extends StartController implements Checkable
 
 
     @FXML
-    private void btn1(ActionEvent event) throws IOException {
-        if(!choices.contains(1)) {
-            setChoice(1);
+    private void onButtonClicked(ActionEvent event) throws IOException {
+        Button btn=(Button) event.getSource();
+        int btnID= buttonsMap.get(btn.getId());
+        if(!choices.contains(btnID)) {
+            setChoice(btnID);
             changeToWinner(event);
             AiChoice();
             changeToWinner(event);
@@ -193,116 +193,6 @@ public class SinglePlayerController extends StartController implements Checkable
         }
     }
 
-    @FXML
-    private void btn2(ActionEvent event) throws IOException {
-        if(!choices.contains(2)) {
-            setChoice(2);
-            changeToWinner(event);
-            AiChoice();
-            changeToWinner(event);
-        }else {
-            if(counter%2!=0) {
-                setAlert();
-            }
-        }
-    }
 
-    @FXML
-    private void btn3(ActionEvent event) throws IOException {
-        if(!choices.contains(3)) {
-            setChoice(3);
-            changeToWinner(event);
-            AiChoice();
-            changeToWinner(event);
-        }else {
-            if(counter%2!=0) {
-                setAlert();
-            }
-        }
-    }
-
-    @FXML
-    private void btn4(ActionEvent event) throws IOException {
-        if(!choices.contains(4)) {
-            setChoice(4);
-            changeToWinner(event);
-            AiChoice();
-            changeToWinner(event);
-        }else {
-            if(counter%2!=0) {
-                setAlert();
-            }
-        }
-    }
-
-    @FXML
-    private void btn5(ActionEvent event) throws IOException {
-        if(!choices.contains(5)) {
-            setChoice(5);
-            changeToWinner(event);
-            AiChoice();
-            changeToWinner(event);
-        }else {
-            if(counter%2!=0) {
-                setAlert();
-            }
-        }
-    }
-
-    @FXML
-    private void btn6(ActionEvent event) throws IOException {
-        if(!choices.contains(6)) {
-            setChoice(6);
-            changeToWinner(event);
-            AiChoice();
-            changeToWinner(event);
-        }else {
-            if(counter%2!=0) {
-                setAlert();
-            }
-        }
-    }
-
-    @FXML
-    private void btn7(ActionEvent event) throws IOException {
-        if(!choices.contains(7)) {
-            setChoice(7);
-            changeToWinner(event);
-            AiChoice();
-            changeToWinner(event);
-        }else {
-            if(counter%2!=0) {
-                setAlert();
-            }
-        }
-    }
-
-    @FXML
-    private void btn8(ActionEvent event) throws IOException {
-        if(!choices.contains(8)) {
-            setChoice(8);
-            changeToWinner(event);
-            AiChoice();
-            changeToWinner(event);
-        }else {
-            if(counter%2!=0) {
-                setAlert();
-            }
-        }
-    }
-
-    @FXML
-    private void btn9(ActionEvent event) throws IOException {
-        if(!choices.contains(9)) {
-            setChoice(9);
-            changeToWinner(event);
-            AiChoice();
-            changeToWinner(event);
-        }else {
-            if(counter%2!=0) {
-                setAlert();
-            }
-        }
-    }
 
 }
