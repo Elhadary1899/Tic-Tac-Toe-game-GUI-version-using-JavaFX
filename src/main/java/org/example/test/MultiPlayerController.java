@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class MultiPlayerController extends StartController implements Checkable{
     @FXML
@@ -54,7 +55,30 @@ public class MultiPlayerController extends StartController implements Checkable{
     private ImageView img8;
     @FXML
     private ImageView img9;
-
+    HashMap<Integer ,ImageView> imagesMap =new HashMap<>();
+    HashMap<String ,Integer> buttonsMap =new HashMap<>();
+    @FXML
+    public void initialize(){
+        buttonsMap.put("btn1",1);
+        buttonsMap.put("btn2",2);
+        buttonsMap.put("btn3",3);
+        buttonsMap.put("btn4",4);
+        buttonsMap.put("btn5",5);
+        buttonsMap.put("btn6",6);
+        buttonsMap.put("btn7",7);
+        buttonsMap.put("btn8",8);
+        buttonsMap.put("btn9",9);
+        ///////////////////////////
+        imagesMap.put(1,img1);
+        imagesMap.put(2,img2);
+        imagesMap.put(3,img3);
+        imagesMap.put(4,img4);
+        imagesMap.put(5,img5);
+        imagesMap.put(6,img6);
+        imagesMap.put(7,img7);
+        imagesMap.put(8,img8);
+        imagesMap.put(9,img9);
+    }
 
     @Override
     public char XorO(){
@@ -135,8 +159,12 @@ public class MultiPlayerController extends StartController implements Checkable{
 
 
     @FXML
-    private void btn1(ActionEvent event) throws IOException {
-        if(!choices.contains(1)) {
+    private void onButtonClicked(ActionEvent event) throws IOException {
+        Button btn=(Button) event.getSource();
+        int btnID= buttonsMap.get(btn.getId());
+        ImageView img=imagesMap.get(btnID);
+
+        if(!choices.contains(btnID)) {
             Image image;
             char symbol = XorO();
             if (symbol == 'O') {
@@ -144,8 +172,8 @@ public class MultiPlayerController extends StartController implements Checkable{
             } else {
                 image = new Image("/x.png");
             }
-            img1.setImage(image);
-            choices.add(1);
+            img.setImage(image);
+            choices.add(btnID);
             changeToWinner(event);
         }else {
             if(counter%2==0) {
@@ -154,164 +182,5 @@ public class MultiPlayerController extends StartController implements Checkable{
         }
     }
 
-    @FXML
-    private void btn2(ActionEvent event) throws IOException {
-        if(!choices.contains(2)) {
-            Image image;
-            char symbol = XorO();
-            if (symbol == 'O') {
-                image = new Image("/o.png");
-            } else {
-                image = new Image("/x.png");
-            }
-            img2.setImage(image);
-            choices.add(2);
-            changeToWinner(event);
-        }else {
-            if(counter%2==0) {
-                setAlert();
-            }
-        }
-    }
-
-    @FXML
-    private void btn3(ActionEvent event) throws IOException {
-        if(!choices.contains(3)) {
-            Image image;
-            char symbol = XorO();
-            if (symbol == 'O') {
-                image = new Image("/o.png");
-            } else {
-                image = new Image("/x.png");
-            }
-            img3.setImage(image);
-            choices.add(3);
-            changeToWinner(event);
-        }else {
-            if(counter%2==0) {
-                setAlert();
-            }
-        }
-    }
-
-    @FXML
-    private void btn4(ActionEvent event) throws IOException {
-        if(!choices.contains(4)) {
-            Image image;
-            char symbol = XorO();
-            if (symbol == 'O') {
-                image = new Image("/o.png");
-            } else {
-                image = new Image("/x.png");
-            }
-            img4.setImage(image);
-            choices.add(4);
-            changeToWinner(event);
-        }else {
-            if(counter%2==0) {
-                setAlert();
-            }
-        }
-    }
-
-    @FXML
-    private void btn5(ActionEvent event) throws IOException {
-        if(!choices.contains(5)) {
-            Image image;
-            char symbol = XorO();
-            if (symbol == 'O') {
-                image = new Image("/o.png");
-            } else {
-                image = new Image("/x.png");
-            }
-            img5.setImage(image);
-            choices.add(5);
-            changeToWinner(event);
-        }else {
-            if(counter%2==0) {
-                setAlert();
-            }
-        }
-    }
-
-    @FXML
-    private void btn6(ActionEvent event) throws IOException {
-        if(!choices.contains(6)) {
-            Image image;
-            char symbol = XorO();
-            if (symbol == 'O') {
-                image = new Image("/o.png");
-            } else {
-                image = new Image("/x.png");
-            }
-            img6.setImage(image);
-            choices.add(6);
-            changeToWinner(event);
-        }else {
-            if(counter%2==0) {
-                setAlert();
-            }
-        }
-    }
-
-    @FXML
-    private void btn7(ActionEvent event) throws IOException {
-        if(!choices.contains(7)) {
-            Image image;
-            char symbol = XorO();
-            if (symbol == 'O') {
-                image = new Image("/o.png");
-            } else {
-                image = new Image("/x.png");
-            }
-            img7.setImage(image);
-            choices.add(7);
-            changeToWinner(event);
-        }else {
-            if(counter%2==0) {
-                setAlert();
-            }
-        }
-    }
-
-    @FXML
-    private void btn8(ActionEvent event) throws IOException {
-        if(!choices.contains(8)) {
-            Image image;
-            char symbol = XorO();
-            if (symbol == 'O') {
-                image = new Image("/o.png");
-            } else {
-                image = new Image("/x.png");
-            }
-            img8.setImage(image);
-            choices.add(8);
-            changeToWinner(event);
-        }else {
-            if(counter%2==0) {
-                setAlert();
-            }
-        }
-    }
-
-    @FXML
-    private void btn9(ActionEvent event) throws IOException {
-        if(!choices.contains(9)) {
-            Image image;
-            char symbol = XorO();
-            if (symbol == 'O') {
-                image = new Image("/o.png");
-            } else {
-                image = new Image("/x.png");
-            }
-            img9.setImage(image);
-            choices.add(9);
-            changeToWinner(event);
-        }else {
-            if(counter%2==0) {
-                setAlert();
-            }
-        }
-    }
 
 }
